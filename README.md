@@ -1,0 +1,1 @@
+# cloudformation-template-rubrik-cloudout
