@@ -13,7 +13,7 @@ Amazon S3 Template URL
 CloudFormation Stack Interface
 ------------------
 
-![CloudFormation Screenshot](https://user-images.githubusercontent.com/8610203/40116360-141f752c-58d9-11e8-8af1-e4a9feae350b.png)
+![CloudFormation Screenshot](https://user-images.githubusercontent.com/8610203/40200032-d76d9902-59e0-11e8-9c43-c95b2791321d.png)
 
 Variables
 ------------------
@@ -30,8 +30,9 @@ Variables
 
 | Variable  |  Default | Description  |
 |---|---|---|
-| IAMUserName | rubrik-cloudon | The name of the IAM User to assign the new CloudOn specific policies to. |
 | CreateNewUser | yes | Create a new IAM user specific to Rubrik CloudOn. If 'no' is selected the S3 IAM policy will be attached to the provided IAMUserName which should already be created. |
+| IAMUserName | rubrik-cloudon | The name of the IAM User to assign the new CloudOn specific policies to. |
+
 
 
 **Optional**
