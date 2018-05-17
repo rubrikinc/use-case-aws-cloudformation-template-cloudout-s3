@@ -10,7 +10,7 @@
               },
               {
                 "Label": { "default" : "IAM Users and Roles" },
-                "Parameters": [ "IAMUserName", "CreateNewUser" ]
+                "Parameters": [ "CreateNewUser", "IAMUserName" ]
               },
               {
                 "Label": { "default" : "Optional" },
