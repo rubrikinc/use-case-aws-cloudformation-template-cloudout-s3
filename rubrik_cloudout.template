@@ -51,7 +51,7 @@
         "IAMUserName" : {
             "Description": "The name of the IAM User to assign the new CloudOut specific policies to.",
             "Type": "String",
-            "Default": "rubrik-cloudout"
+            "Default": "rubrik"
         },
 
         "UserPolicyName": {
