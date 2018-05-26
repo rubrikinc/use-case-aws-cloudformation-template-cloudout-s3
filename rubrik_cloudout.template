@@ -6,7 +6,7 @@
             "ParameterGroups" : [
               {
                 "Label": { "default" : "Storage Configuration" },
-                "Parameters": [ "CreateS3NewBucket", "S3BucketName" ]
+                "Parameters": [ "CreateNewS3Bucket", "S3BucketName" ]
               },
               {
                 "Label": { "default" : "IAM Users and Roles" },
@@ -23,7 +23,7 @@
 
     "Parameters": {
     
-        "CreateS3NewBucket": {
+        "CreateNewS3Bucket": {
             "Description": "Create a new S3 Bucket to use as a Rubrik archival location.",
             "Type": "String",
             "Default": "yes",
@@ -67,7 +67,7 @@
     },
 
     "Conditions": {
-        "CreateBucket" : { "Fn::Equals" : [ {"Ref" : "CreateS3NewBucket"}, "yes" ] },
+        "CreateBucket" : { "Fn::Equals" : [ {"Ref" : "CreateNewS3Bucket"}, "yes" ] },
         "CreateIAMuser" : { "Fn::Equals" : [ {"Ref" : "CreateNewUser"}, "yes" ] },
         "DontCreateIAMuser" : { "Fn::Equals" : [ {"Ref" : "CreateNewUser"}, "no" ] }
 
