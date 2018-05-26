@@ -13,7 +13,7 @@ Amazon S3 Template URL
 CloudFormation Stack Interface
 ------------------
 
-![CloudFormation Screenshot](https://user-images.githubusercontent.com/8610203/40200032-d76d9902-59e0-11e8-9c43-c95b2791321d.png)
+![CloudFormation Screenshot](https://user-images.githubusercontent.com/8610203/40571735-e047cbd6-6063-11e8-9f32-a2fad181862c.png)
 
 Variables
 ------------------
