@@ -1,4 +1,4 @@
-# AWS CloudFormation Template: Rubrik CloudOut
+# Use Case: AWS CloudFormation Template for Rubrik CloudOut
 
 This repository contains a CloudFormation Template designed to help complete the AWS configuration process required for the Rubrik CloudOut using an S3 bucket for archiving to Amazon Web Services. 
 
