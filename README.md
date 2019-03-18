@@ -1,52 +1,34 @@
-# AWS CloudFormation Template: Rubrik CloudOut
+# Use Case: AWS CloudFormation Template for Rubrik CloudOut
 
-Complete the AWS configuration process required for the Rubrik CloudOut which uses an S3 bucket for archiving to Amazon.
+This repository contains a CloudFormation Template designed to help complete the AWS configuration process required for the Rubrik CloudOut using an S3 bucket for archiving to Amazon Web Services. 
 
-Amazon S3 Template URL
-------------------
-[https://s3-us-west-1.amazonaws.com/cloudformation-templates-rubrik-prod/rubrik_cloudout.template
-](https://s3-us-west-1.amazonaws.com/cloudformation-templates-rubrik-prod/rubrik_cloudout.template
-)
+# :blue_book: Documentation 
 
-![Select Template](https://user-images.githubusercontent.com/8610203/39970416-9d6bd71a-56b0-11e8-8a58-7832875180a8.png)
+Here are some resources to get you started! If you find any challenges from this project are not properly documented or are unclear, please [raise an issue](https://github.com/rubrikinc/use-case-aws-cloudformation-template-cloudout-s3/issues/new/choose) and let us know! This is a fun, safe environment - don't worry if you're a GitHub newbie! :heart:
 
-CloudFormation Stack Interface
-------------------
+* [Quick Start Guide](/docs/quick-start.md)
 
-![CloudFormation Screenshot](https://user-images.githubusercontent.com/8610203/40571735-e047cbd6-6063-11e8-9f32-a2fad181862c.png)
+# :white_check_mark: Prerequisites
 
-Variables
-------------------
+There are a few services you'll need in order to get this project off the ground:
 
-**Storage Configuration**
+* AWS CloudFormation - this service allows you to configure CloudOut via a template
+* [Template for CloudOut to S3](rubrik_cloudout.template) - template for configuring CloudOut to S3
+* Rubrik CDM 4.0+ - the platform that protects provisioned workloads
 
-| Variable  |  Default | Description  |
-|---|---|---|
-| CreateS3NewBucket | no | Create a new S3 Bucket to use as a Rubrik archival location.|
-| S3BucketName | n/a |The name of the S3 Bucket used as a Rubrik archival location.|
+# :muscle: How You Can Help
 
+We glady welcome contributions from the community. From updating the documentation to requesting additional CloudFormation templates, all ideas are welcome. Thank you in advance for all of your issues, pull requests, and comments! :star:
 
-**IAM Users and Roles**
+* [Contributing Guide](CONTRIBUTING.md)
+* [Code of Conduct](CODE_OF_CONDUCT.md)
 
-| Variable  |  Default | Description  |
-|---|---|---|
-| CreateNewUser | yes | Create a new IAM user specific to Rubrik CloudOn. If 'no' is selected the S3 IAM policy will be attached to the provided IAMUserName which should already be created. |
-| IAMUserName | rubrik-cloudon | The name of the IAM User to assign the new CloudOn specific policies to. |
+# :pushpin: License
 
+* [MIT License](LICENSE)
 
+# :point_right: About Rubrik Build
 
-**Optional**
+We encourage all contributors to become members. We aim to grow an active, healthy community of contributors, reviewers, and code owners. Learn more in our [Welcome to the Rubrik Build Community](https://github.com/rubrikinc/welcome-to-rubrik-build) page.
 
-Default names and descriptions for the various IAM Users, Policies, and Security Group created during the process.
-
-| Variable  |  Default | Description  |
-|---|---|---|
-| UserPolicyName |rubrik-cloudon |S3 Security policy used for Rubrik CloudOn.|
-
-Output
-------------------
-
-| Variable | Description |
-|---|---|
-| IAMUserAccessKey | Access Key for the new IAM User (if applicable).  |
-| IAMUserSecretKey | Secret Key for the new IAM user (if applicable).  |
+We'd love to hear from you! Email us: build@rubrik.com :love_letter:
