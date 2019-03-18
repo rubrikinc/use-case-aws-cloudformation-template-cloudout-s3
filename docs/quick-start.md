@@ -14,7 +14,6 @@ The end-to-end workflow is as follows:
 
 
 # CloudFormation Stack
-------------------
 
 Navigate to **Services** > **CloudFormation** > **Stacks** and select **Create Stack**. 
 
@@ -45,7 +44,7 @@ Go to the Rubrik UI, select the configuraiton cog, and choose **Archival Locatio
 Follow the Rubrik CDM User Guide to complete the setup. 
 
 # Variables
-------------------
+
 This section provides information regarding the variables used in the template. 
 
 ## Storage Configuration
