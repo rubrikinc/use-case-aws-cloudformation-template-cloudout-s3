@@ -37,7 +37,7 @@ Press **Next** through the **Options** page.
 
 Use the **Review** page to ensure all the information is correct. Press **Create** once reviewed.
 
-Go to the Rubrik UI, select the configuraiton cog, and choose **Archival Locations**. Select the plus (**+**) sign to add a new archival location. 
+Go to the Rubrik UI, select the configuration cog, and choose **Archival Locations**. Select the plus (**+**) sign to add a new archival location. 
 
 ![Add Archival Location](/docs/img/image4.png)
 
