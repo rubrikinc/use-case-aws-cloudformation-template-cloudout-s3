@@ -14,7 +14,7 @@
               },
               {
                 "Label": { "default" : "Optional" },
-                "Parameters": [ "UserPolicyName" ]
+                "Parameters": [ "UserPolicyName", "UseKMS" ]
               }
             ]
           }
