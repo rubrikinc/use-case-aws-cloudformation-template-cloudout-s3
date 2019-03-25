@@ -166,7 +166,7 @@
                         ],
                         "Resource": "arn:aws:s3:::*"
                     },
-                     {
+                    {
                         "Effect": "Allow",
                         "Action": [
                             "s3:ListBucket",
@@ -174,7 +174,7 @@
                         ],
                         "Resource": { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" } ] ] }
                     },
-                   {
+                    {
                         "Effect": "Allow",
                         "Action": [
                             "s3:PutObject",
@@ -191,7 +191,53 @@
                 },
                 "Users": [ { "Ref" : "IAMUserName" } ]
             }
+        },
+
+       "CreateKMSKey" : {
+            "Type" : "AWS::KMS::Key",
+            "Properties" : {
+                "Description" : "Rubrik archive location encryption",
+                "KeyPolicy" : {
+                    "Version": "2012-10-17",
+                    "Id": { "Fn::Join" : [ "", [ "rubrik-encryption-", { "Ref": "S3BucketName" } ] ] },
+                    "Statement": [
+                         {
+                            "Sid": "Enable IAM User Permissions",
+                            "Effect": "Allow",
+                            "Principal": {
+                                
+                                "AWS": { "Fn::Join" : [ "", [ "arn:aws:iam::", { "Ref": "AWS::AccountId" }, ":root" ] ] }
+                            },
+                            "Action": "kms:*",
+                            "Resource": "*"
+                        },
+                        {
+                            "Sid": "Allow use of the key",
+                            "Effect": "Allow",
+                            "Principal": { "AWS": { "Fn::GetAtt" : [ "CreateNewIAMUser", "Arn" ] } },
+                            "Action": [
+                                "kms:Encrypt",
+                                "kms:Decrypt",
+                                "kms:ReEncrypt*",
+                                "kms:GenerateDataKey*",
+                                "kms:DescribeKey"
+                            ], 
+                            "Resource": "*"
+                        }    
+                    ]
+                }
+            }
+        },
+
+         "KMSKeyAlias" : {
+            "Type" : "AWS::KMS::Alias",
+            "Properties" : {
+                "AliasName" : { "Fn::Join" : [ "", [ "alias/rubrik-encryption-", { "Ref": "S3BucketName" } ] ] },
+                "TargetKeyId" : {"Ref":"CreateKMSKey"}
+            }
         }
+
+        
 
     },
     
@@ -209,8 +255,16 @@
         "AWSBucketName" : {
           "Description": "The S3 Bucket name.",
           "Value" : { "Ref" : "S3BucketName" }
+        },
+        "KMSKeyId" : {
+          "Description": "The KMS Key ID used for encryption",
+          "Value" : { "Ref" : "CreateKMSKey" }
+        },
+        "Region": {
+          "Description": "The AWS Region where the configuration took place.",
+          "Value" : { "Ref" : "AWS::Region" } 
         }
-      }
+    }
 }
 
 
