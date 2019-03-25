@@ -117,20 +117,31 @@
                     {
                         "Effect": "Allow",
                         "Action": [
-                            "s3:ListAllMyBuckets",
-                            "s3:HeadBucket"
+                            "s3:CreateBucket",
+                            "s3:ListAllMyBuckets"
                         ],
-                        "Resource": "*"
+                        "Resource": "arn:aws:s3:::*"
                     },
                     {
                         "Effect": "Allow",
                         "Action": [
-                            "s3:*"
+                            "s3:ListBucket",
+                            "s3:GetBucketLocation"
                         ],
-                        "Resource": [
-                            { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" } ] ] },
-                            { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" }, "/*" ] ] }
-                        ]
+                        "Resource": { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" } ] ] }
+                    },
+                    {
+                        "Effect": "Allow",
+                        "Action": [
+                            "s3:PutObject",
+                            "s3:GetObject",
+                            "s3:DeleteObject",
+                            "s3:AbortMultipartUpload",
+                            "s3:ListMultipartUploadParts",
+                            "s3:RestoreObject"
+                        ],
+                        "Resource": { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" }, "/*" ] ] }
+                        
                     }
                 ]
                 },
@@ -150,20 +161,31 @@
                     {
                         "Effect": "Allow",
                         "Action": [
-                            "s3:ListAllMyBuckets",
-                            "s3:HeadBucket"
+                            "s3:CreateBucket",
+                            "s3:ListAllMyBuckets"
                         ],
-                        "Resource": "*"
+                        "Resource": "arn:aws:s3:::*"
                     },
-                    {
+                     {
                         "Effect": "Allow",
                         "Action": [
-                            "s3:*"
+                            "s3:ListBucket",
+                            "s3:GetBucketLocation"
                         ],
-                        "Resource": [
-                            { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" } ] ] },
-                            { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" }, "/*" ] ] }
-                        ]
+                        "Resource": { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" } ] ] }
+                    },
+                   {
+                        "Effect": "Allow",
+                        "Action": [
+                            "s3:PutObject",
+                            "s3:GetObject",
+                            "s3:DeleteObject",
+                            "s3:AbortMultipartUpload",
+                            "s3:ListMultipartUploadParts",
+                            "s3:RestoreObject"
+                        ],
+                        "Resource": { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" }, "/*" ] ] }
+                        
                     }
                 ]
                 },
@@ -183,6 +205,12 @@
           "Condition": "CreateIAMuser",
           "Description": "Secret Key for the new IAM user.",
           "Value" : { "Fn::GetAtt" : [ "IAMUserAccessKeys", "SecretAccessKey" ] }
+        },
+        "AWSBucketName" : {
+          "Description": "The S3 Bucket name.",
+          "Value" : { "Ref" : "S3BucketName" }
         }
       }
 }
+
+
