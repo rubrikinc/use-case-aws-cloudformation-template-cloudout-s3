@@ -54,6 +54,14 @@
             "Default": "rubrik"
         },
 
+        "UseKMS": {
+            "Description": "Create a new KMS key for encryption.",
+            "Type": "String",
+            "Default": "yes",
+            "AllowedValues": [ "yes", "no" ],
+            "ConstraintDescription": "Choose 'yes' to create a new KMS Key for encryption"
+        },
+
         "UserPolicyName": {
             "Description": "S3 Security policy used for Rubrik CloudOut.",
             "Type": "String",
@@ -69,7 +77,8 @@
     "Conditions": {
         "CreateBucket" : { "Fn::Equals" : [ {"Ref" : "CreateNewS3Bucket"}, "yes" ] },
         "CreateIAMuser" : { "Fn::Equals" : [ {"Ref" : "CreateNewUser"}, "yes" ] },
-        "DontCreateIAMuser" : { "Fn::Equals" : [ {"Ref" : "CreateNewUser"}, "no" ] }
+        "DontCreateIAMuser" : { "Fn::Equals" : [ {"Ref" : "CreateNewUser"}, "no" ] },
+        "CreateKMS" : { "Fn::Equals" : [ {"Ref" : "UseKMS"}, "yes" ] }
 
     },
 
@@ -195,6 +204,7 @@
 
        "CreateKMSKey" : {
             "Type" : "AWS::KMS::Key",
+            "Condition" : "CreateKMS",
             "Properties" : {
                 "Description" : "Rubrik archive location encryption",
                 "KeyPolicy" : {
@@ -229,13 +239,14 @@
             }
         },
 
-         "KMSKeyAlias" : {
+        "KMSKeyAlias" : {
             "Type" : "AWS::KMS::Alias",
+            "Condition" : "CreateKMS",
             "Properties" : {
                 "AliasName" : { "Fn::Join" : [ "", [ "alias/rubrik-encryption-", { "Ref": "S3BucketName" } ] ] },
                 "TargetKeyId" : {"Ref":"CreateKMSKey"}
             }
-        }
+    }
 
         
 
@@ -257,6 +268,7 @@
           "Value" : { "Ref" : "S3BucketName" }
         },
         "KMSKeyId" : {
+          "Condition" : "CreateKMS",
           "Description": "The KMS Key ID used for encryption",
           "Value" : { "Ref" : "CreateKMSKey" }
         },
