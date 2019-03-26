@@ -70,7 +70,7 @@ Default names and descriptions for the various IAM Users, Policies, and Security
 |----------------|----------------|---------------------------------------------|
 | UserPolicyName | rubrik-cloudon | S3 Security policy used for Rubrik CloudOn. |
 
-### Output 
+## Output 
 
 The following information can used when to add the archive location to the Rubrik cluster.
 
