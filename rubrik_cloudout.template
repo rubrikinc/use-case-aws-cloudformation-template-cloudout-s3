@@ -269,7 +269,7 @@
         },
         "KMSKeyId" : {
           "Condition" : "CreateKMS",
-          "Description": "The KMS Key ID used for encryption",
+          "Description": "The KMS Key ID used for encryption.",
           "Value" : { "Ref" : "CreateKMSKey" }
         },
         "Region": {
