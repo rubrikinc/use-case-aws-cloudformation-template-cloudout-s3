@@ -45,7 +45,7 @@ Follow the Rubrik CDM User Guide to complete the setup.
 
 This section provides information regarding the variables used in the template.
 
-| WARNING: CloudFormation is not ideponment. If any of the provided variables are not unique the template will return an error message! |
+| WARNING: CloudFormation is not idempotent. If any of the provided variables are not unique the template will return an error message! |
 | --- |
 
 ### Storage Configuration
