@@ -1,6 +1,6 @@
 # Quick Start: AWS CloudFormation Template for Rubrik CloudOut
 
-Walkthrough for commpleting the AWS configuration process required for the Rubrik CloudOut to S3.
+Walkthrough for completing the AWS configuration process required for the Rubrik CloudOut to S3.
 
 The following tasks are completed during the workflow:
 
