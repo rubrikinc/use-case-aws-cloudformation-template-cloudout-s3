@@ -135,7 +135,8 @@
                         "Effect": "Allow",
                         "Action": [
                             "s3:ListBucket",
-                            "s3:GetBucketLocation"
+                            "s3:GetBucketLocation",
+                            "s3:GetBucketAcl"
                         ],
                         "Resource": { "Fn::Join" : [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketName" } ] ] }
                     },
