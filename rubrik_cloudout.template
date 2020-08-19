@@ -225,7 +225,14 @@
                         {
                             "Sid": "Allow use of the key",
                             "Effect": "Allow",
-                            "Principal": { "AWS": { "Fn::GetAtt" : [ "CreateNewIAMUser", "Arn" ] } },
+                            "Principal": { "AWS": { 
+                                "Fn::If": ["CreateIAMuser", { 
+                                        "Fn::GetAtt" : [ "CreateNewIAMUser", "Arn" ] 
+                                    }, { 
+                                        "Fn::Join" : [ "", [ "arn:aws:iam::", { "Ref": "AWS::AccountId" }, ":user/", {"Ref" : "IAMUserName"} ] ] 
+                                    } ]
+                                } 
+                            },
                             "Action": [
                                 "kms:Encrypt",
                                 "kms:Decrypt",
@@ -242,6 +249,7 @@
 
         "KMSKeyAlias" : {
             "Type" : "AWS::KMS::Alias",
+            "DependsOn" : "CreateKMSKey",
             "Condition" : "CreateKMS",
             "Properties" : {
                 "AliasName" : { "Fn::Join" : [ "", [ "alias/rubrik-encryption-", { "Ref": "S3BucketName" } ] ] },
@@ -279,5 +287,3 @@
         }
     }
 }
-
-
