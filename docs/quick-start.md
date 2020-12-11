@@ -59,8 +59,8 @@ This section provides information regarding the variables used in the template.
 
 | Variable      | Default        | Description                                                                                                                                                           |
 |---------------|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CreateNewUser | yes            | Create a new IAM user specific to Rubrik CloudOn. If 'no' is selected, the IAM policy will be attached to the provided `IAMUserName` which should already be created. |
-| IAMUserName   | rubrik-cloudon | The name of the IAM User to assign the new CloudOn specific policies to.                                                                                              |
+| CreateNewUser | yes            | Create a new IAM user specific to Rubrik cloudout. If 'no' is selected, the IAM policy will be attached to the provided `IAMUserName` which should already be created. |
+| IAMUserName   | rubrik-cloudout | The name of the IAM User to assign the new cloudout specific policies to.                                                                                              |
 
 ### Optional
 
@@ -68,7 +68,7 @@ Default names and descriptions for the various IAM Users, Policies, and Security
 
 | Variable       | Default        | Description                                 |
 |----------------|----------------|---------------------------------------------|
-| UserPolicyName | rubrik-cloudon | S3 Security policy used for Rubrik CloudOn. |
+| UserPolicyName | rubrik-cloudout | S3 Security policy used for Rubrik cloudout. |
 
 ## Output 
 
