@@ -32,6 +32,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
         pip install --quiet --no-cache-dir awscli
-        for (FILE in $FILES); do 
+        for FILE in $FILES; do 
           aws s3 cp ${FILE} s3://${S3_BUCKET}/${S3_KEY}
         done
