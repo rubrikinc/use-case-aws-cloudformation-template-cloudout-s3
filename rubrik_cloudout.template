@@ -65,7 +65,6 @@
             "Type": "String",
             "Default": "rubrik-cloudout"
         }
-
     },
 
     "Mappings": {
