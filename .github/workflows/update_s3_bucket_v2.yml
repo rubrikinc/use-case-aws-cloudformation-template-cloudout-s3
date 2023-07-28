@@ -20,7 +20,7 @@ jobs:
         architecture: 'x64'
     - name: Copy Template  
       env:
-        FILE: ./rubrik_cloudout.template
+        FILES: "./rubrik_cloudout.template ./rubrik_cloudout_consolidation.template"
         AWS_REGION: 'us-west-1'
         S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         S3_KEY: ${{ secrets.S3_KEY }}
@@ -28,4 +28,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
         pip install --quiet --no-cache-dir awscli
-        aws s3 cp ${FILE} s3://${S3_BUCKET}/${S3_KEY}
+        for (FILE in $FILES); do 
+          aws s3 cp ${FILE} s3://${S3_BUCKET}/${S3_KEY}
+        done
