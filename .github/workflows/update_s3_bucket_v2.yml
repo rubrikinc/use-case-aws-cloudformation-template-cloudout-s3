@@ -1,13 +1,17 @@
-name: Add Template to Bucket
+name: Add Templates to Bucket
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - master
     paths:
       - 'rubrik_cloudout.template'
+      - 'rubrik_cloudout_consolidation.template'
 
 jobs:
-  deploy:
+  if_merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     
     steps:
