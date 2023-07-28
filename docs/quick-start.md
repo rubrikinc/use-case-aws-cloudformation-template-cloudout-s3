@@ -23,9 +23,9 @@ Either select **Upload a template file** or, preferably, **Specify an Amazon S3 
 
 ![Select Template](/docs/img/image2.png)
 
-The template file can be downloaded [here](https://s3-us-west-1.amazonaws.com/cloudformation-templates-rubrik-prod/rubrik_cloudout.template). Copy the following URL:
+The template file can be downloaded [here](https://rubrik-cfts.s3.us-west-1.amazonaws.com/rubrik_cloudout.template). Copy the following URL:
 
-`https://s3-us-west-1.amazonaws.com/cloudformation-templates-rubrik-prod/rubrik_cloudout.template`
+`https://rubrik-cfts.s3.us-west-1.amazonaws.com/rubrik_cloudout.template`
 
 On the **Specify stack details** page, enter the **Stack name** and the **S3BucketName**. 
 
