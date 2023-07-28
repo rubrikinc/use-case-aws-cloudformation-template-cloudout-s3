@@ -213,9 +213,7 @@
                 "AliasName" : { "Fn::Join" : [ "", [ "alias/rubrik-encryption-", { "Ref": "S3BucketName" } ] ] },
                 "TargetKeyId" : {"Ref":"CreateKMSKey"}
             }
-    }
-
-        
+        }
 
     },
     
